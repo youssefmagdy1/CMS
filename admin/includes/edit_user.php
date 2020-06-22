@@ -32,9 +32,9 @@ if(isset($_POST['update_user'])){
     if(!empty($_FILES['image']['name'])){
         $user_img = $_FILES['image']['name'];
         $user_img_temp = $_FILES['image']['tmp_name'];
+        move_uploaded_file($user_img_temp , "../images/$user_img");
     }   
-    //$user_role =  $_POST['user_role'];
-    $user_password =  $_POST['user_password'];   
+    $user_password = password_hash($_POST['user_password'],PASSWORD_BCRYPT);
     $user_role = $_POST['user_role'];
 
     $sql = "UPDATE  users SET ";
@@ -47,8 +47,6 @@ if(isset($_POST['update_user'])){
     $sql .= "`user_password` = '$user_password' ";
     $sql .= "WHERE `user_id`='$user_id'; ";
 
-    move_uploaded_file($user_img_temp , "../images/$user_img");
-    
     $update_user_query = mysqli_query($conn ,$sql);
     // confirm_query($update_user_query); 
     if(!$update_user_query) {die(mysqli_error($conn));}

@@ -31,3 +31,17 @@
     <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
   </body>
 </html>
+
+<script>
+
+</script>
+
+
+<!-- 
+
+// ClassicEditor
+// .create( document.querySelector( '#editor' ) )
+// .catch( error => {
+//     console.error( error );
+// } );        
+// tinymce.init({selector:'textarea'}); -->

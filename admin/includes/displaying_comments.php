@@ -34,6 +34,8 @@
             $comment_status =  $row['comment_status'];
 
             $comment_contant =  substr($comment_contant,0,100) ;
+
+           
             echo " <tr> 
                     <td>  {$comment_id} </td>                  
                     <td>  {$comment_aurther} </td>

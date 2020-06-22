@@ -3,9 +3,8 @@
 <?php include_once '../includes/dp.php' ?>
 <?php include 'function.php'?>
 <?php 
-    if(!isset($_SESSION['user_role'])){
+    if(!isset($_SESSION['user_role'])||$_SESSION['user_role']=='subscriber'){
         header('Location: ../index.php');
-
     }
 ?>
 
@@ -38,8 +37,6 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
-    <!-- <script src="js/script.js"></script> -->
-    <script src="https://cdn.ckeditor.com/ckeditor5/19.1.1/classic/ckeditor.js"></script>
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

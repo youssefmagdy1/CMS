@@ -6,15 +6,11 @@
         $comment_email = $_POST['user_email'];
         $post_id = $_GET['post'];
 
-        $query = "INSERT INTO `comments`(comment_contet ,comment_post_id ,comment_aurtor,comment_email,comment_status) Values('$comment_content' , $post_id ,'$comment_user' ,'$comment_email' ,'draft') ";
-        $insert_comment_query = mysqli_query($conn ,$query);
-        if(!$insert_comment_query) die(mysqli_error($conn)); 
-
-        // $query= "UPDATE posts SET `post-commet-count` =  `post-commet-count`+1 ";
-        // $query .= "WHERE `post-id`=$post_id ";
-        // $increases_comment_query = mysqli_query($conn ,$query);
-        // if(!$increases_comment_query) die(mysqli_error($conn)); 
-
+        if(!empty($comment_content)&&!empty($comment_email)&&!empty($comment_user)){
+            $query = "INSERT INTO `comments`(comment_contet ,comment_post_id ,comment_aurtor,comment_email,comment_status) Values('$comment_content' , $post_id ,'$comment_user' ,'$comment_email' ,'draft') ";
+            $insert_comment_query = mysqli_query($conn ,$query);
+            if(!$insert_comment_query) die(mysqli_error($conn)); 
+        }
     }
 
 ?>
@@ -24,11 +20,11 @@
                     <form role="form" action="" method="post">
                         <div class="form-group">
                             <label for="comment_user">Name</label>
-                            <input type="text" class="form-control" name="comment_user">
+                            <input type="text" class="form-control" name="comment_user" required>
                         </div>
                         <div class="form-group">
                             <label for="user_email">Email</label>
-                            <input type="email" class="form-control" name="user_email">
+                            <input type="email" class="form-control" name="user_email" required>
                         </div>
                         <div class="form-group">
                             <label for="comment">comment</label>

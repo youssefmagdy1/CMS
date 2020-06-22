@@ -53,9 +53,11 @@ function delete_catgory(){
 
 //posts
 
-function delete_post($post_id){
+function delete_post($id){
     global $conn ;  
-    $sql = "DELETE FROM posts WHERE `post-id`={$post_id}";
+    $sql = "DELETE FROM comments WHERE `comment_post_id`={$id}";
+    $deleted_comment_id_query = mysqli_query($conn ,$sql);
+    $sql = "DELETE FROM posts WHERE `post-id`={$id}";  
     $deleted_id_query = mysqli_query($conn ,$sql);
     header("Location: posts.php");        
 }

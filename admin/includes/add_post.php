@@ -71,20 +71,9 @@
         <label for="post_content">Post Content</label>
         <textarea class="form-control "name="post_content" id="editor" cols="30" rows="10"> </textarea>
     </div>
+   
 
-    <script>
-       
-            ClassicEditor
-            .create( document.querySelector( '#editor' ) )
-            .catch( error => {
-                console.error( error );
-            } );
 
-    
-       
-           
-    </script>
-      
 
     <div class="form-group">
         <input class="btn btn-primary" type="submit" name="create_post" value="Publish Post">

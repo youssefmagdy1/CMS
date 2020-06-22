@@ -1,6 +1,51 @@
+<?php 
+    if(isset($_POST['checkBoxArray'])){
+        foreach($_POST['checkBoxArray'] as $checkBoxValue){
+            $bulk_option = $_POST['bulk_options'];
+            
+            switch ($bulk_option) {
+                case 'admin':
+                    admin_user($checkBoxValue);
+                    break;
+
+                case 'subscriber':
+                    subscriber_user($checkBoxValue);
+                    break;
+                
+                case 'delete':
+                    delete_user($checkBoxValue );
+                    break;
+                
+                default:
+                   
+                    break;
+            }
+        }
+    }
+   
+
+?>
+
+<form action="" method="post">
 <table class="table table-bordered table-hover">
+<div class="row">
+    <div id="bulkOptionContainer" class="col-xs-4 ">
+        <select class="form-control" name="bulk_options" id="">
+        <option value="">Select Options</option>
+        <option value="admin">admin</option>
+        <option value="subscriber">Subscriber</option>
+        <option value="delete">Delete</option>
+        
+        </select>
+    </div>       
+    <div class="col-xs-4">
+        <input type="submit" name="submit" class="btn btn-success" value="Apply">
+        <a class="btn btn-primary" href="posts.php?source=add_post">Add New</a>
+    </div>
+</div>
     <thead>
         <tr>
+            <td><input type="checkbox" id="selectAllPosts"></td>
             <td>ID</td>
             <td>Username</td>
             <td>picture</td>
@@ -33,6 +78,7 @@
             $randSalt =  $row['randSalt'];
 
             echo " <tr> 
+                   <td><input type='checkbox' value='{$user_id}'  name='checkBoxArray[]' class='checkboxs'></td>
                     <td>  {$user_id} </td>
                     <td>  {$username}  </td>
                     <td>  <img width='100' height='100' class='img-responsive' src='../images/{$user_img}'> </td>
@@ -50,3 +96,4 @@
 ?> 
     </tbody>
 </table>
+</form>

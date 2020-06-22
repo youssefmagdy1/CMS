@@ -1,5 +1,35 @@
+<?php 
+    if(isset($_POST['checkBoxArray'])){
+        foreach($_POST['checkBoxArray'] as $checkBoxValue){
+            $bulk_option = $_POST['bulk_options'];
+            
+            switch ($bulk_option) {
+                case 'published':
+                    publish_post($checkBoxValue);
+                    break;
+
+                case 'draft':
+                    unpublish_post($checkBoxValue);
+                    break;
+                
+                case 'delete':
+                    delete_post($checkBoxValue );
+                    break;
+                
+                default:
+                   
+                    break;
+            }
+        }
+    }
+   
+
+?>
+
+
+<form action="" method="post">
 <table class="table table-bordered table-hover">
-<div class="row ">
+<div class="row">
     <div id="bulkOptionContainer" class="col-xs-4 ">
         <select class="form-control" name="bulk_options" id="">
         <option value="">Select Options</option>
@@ -17,6 +47,7 @@
 
     <thead>
         <tr>
+            <td><input type="checkbox" id="selectAllPosts"></td>
             <td>ID</td>
             <td>Aurther</td>
             <td>Title</td>
@@ -59,7 +90,8 @@
 
             
             echo " <tr> 
-                    <td>  {$post_id} </td>
+                    <td><input type='checkbox' value='{$post_id}'  name='checkBoxArray[]' class='checkboxs'></td>
+                    <td> <a href='../post.php?post={$post_id}'>{$post_id}</a> </td>
                     <td>  {$post_aurther}  </td>
                     <td>  {$post_title} </td>
                     <td>  {$post_catgory } </td>
@@ -72,12 +104,10 @@
                     <td><a href='posts.php?source=edit&post={$post_id}'>Edit</td>
                     <td><a href='posts.php?source=publish&post={$post_id}'>publish</td>
                     <td><a href='posts.php?source=unpuplish&post={$post_id}'>unpublish</td>
-                   
-                   
                 </tr>" ;
         }
     }
 ?> 
-<?php //  if(isset($_GET['delete']))delete_post(); ?>
     </tbody>
 </table>
+</form>

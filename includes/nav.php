@@ -46,6 +46,9 @@
                               }
                             }
                         }
+                        else{
+                            echo "<li><a href='registration.php'> register</a> </li>";
+                        }
                     ?>
                     .
 
