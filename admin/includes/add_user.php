@@ -17,9 +17,12 @@
     
     $insert_user_query = mysqli_query($conn ,$sql);
     if (!$insert_user_query) die(mysqli_error($conn)) ; 
-    else { echo " user created" ."<a href='users.php'>VIEW users </a>" ; }
+    else { echo ' <div class="alert alert-success" role="alert">
+                    user created   <a href="users.php">VIEW users </a>
+                  </div>' ; }
     }
 ?>
+
 
 
 <form action="" method="post" enctype="multipart/form-data">    

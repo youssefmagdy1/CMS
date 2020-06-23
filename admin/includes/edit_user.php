@@ -50,7 +50,7 @@ if(isset($_POST['update_user'])){
     $update_user_query = mysqli_query($conn ,$sql);
     // confirm_query($update_user_query); 
     if(!$update_user_query) {die(mysqli_error($conn));}
-     else {echo " user created" ."<a href='users.php'>VIEW users </a>" ; } 
+     else {echo "<div class='alert alert-success' role='alert'> Done  " ."<a href='users.php' class='alert-link'>View users </a> </div>" ; } 
 }
 
 ?>
@@ -67,8 +67,8 @@ if(isset($_POST['update_user'])){
    <div class="form-group">
         <label for="user_role">role</label>
         <select name="user_role" id="">
-          <option value="admin">admin</option>
-          <option value="subscribe">subscribe</option>
+          <option value="admin" >admin</option>
+          <option value="subscribe" <?php if($user_role=="subscriber")echo"selected" ?>>subscribe</option>
         </select>
     </div> 
 

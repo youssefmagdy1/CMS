@@ -75,7 +75,39 @@ function unpublish_post($id){
     header("Location: posts.php");
     
 }   
+function clone_post($id){
+    global $conn ; 
+    $sql = "SELECT * FROM posts WHERE `post-id`=$id ";
+    $clone_post_query = mysqli_query($conn,$sql);
+    if(!$clone_post_query) 
+        die("falid".mysqli_error($conn));
+    else{
+        while($row = mysqli_fetch_assoc($clone_post_query)){
 
+            $post_id =  $row['post-id'];
+            $post_catgory_id =  $row['post-catgory-id'];
+            $post_title =  $row['post-title'];
+            $post_aurther =  $row['post-aurther'];
+            $post_date =  $row['post-date'];
+            $post_img =  $row['post-img'];
+            $post_tags =  $row['post_tags'];
+            $post_content= $row['post-contant'];
+            $post_state =  $row['post-state'];
+        }
+         
+
+    $sql = "INSERT INTO posts (`post-catgory-id`,`post-title`, `post-aurther`,`post-img`,`post-contant`,`post_tags`, `post-state`)";
+    $sql .= " VALUE ('{$post_catgory_id}','{$post_title}','{$post_aurther}','{$post_img}','{$post_content}','{$post_tags}','{$post_state}') ";
+    
+    $insert_clone_post_query = mysqli_query($conn ,$sql);
+    if (!$insert_clone_post_query) die(mysqli_error($conn)) ; 
+   
+    }
+
+
+
+
+}
 
 // comments
 

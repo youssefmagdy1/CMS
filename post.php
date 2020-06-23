@@ -30,7 +30,7 @@ if(isset($_GET['post'])){
 
                 <!-- Author -->
                 <p class="lead">
-                    by <a href="#"> <?php echo $post_aurther ; ?> </a>
+                    by <a href="aurther.php?aurther=<?php echo $post_aurther?>> <?php echo $post_aurther ; ?> </a>
                 </p>
 
                 <hr>

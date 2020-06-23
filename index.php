@@ -22,13 +22,15 @@
                             $post_aurther =  $row['post-aurther'];
                             $post_date =  $row['post-date'];
                             $post_img =  $row['post-img'];
-                            $post_contant =  $row['post-contant'];
+                            $post_contant  = $row['post-contant'];
+                            $post_contant =  substr($post_contant,0,100);
+
             ?>
                 <h2>
                     <a href="post.php?post=<?php echo $post_id; ?>"><?php echo $post_title ?></a>
                 </h2>
                 <p class="lead">
-                    by <a href="index.php"><?php echo $post_aurther?></a>
+                    by <a href="aurther.php?aurther=<?php echo $post_aurther?>"> <?php echo $post_aurther?></a>
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $post_date ?></p>
                 <hr>

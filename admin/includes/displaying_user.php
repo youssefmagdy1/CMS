@@ -86,7 +86,7 @@
                     <td>  {$user_lastname} </td>
                     <td>  {$user_email } </td> 
                     <td>  {$user_role} </td>
-                    <td><a href='users.php?source=delete&user={$user_id}'>Delete</td>
+                    <td><a onClick=\"javascript: return confirm('Are you want to delete'); \" href='users.php?source=delete&user={$user_id}'>Delete</td>
                     <td><a href='users.php?source=edit&user={$user_id}'>Edit</td>
                     <td><a href='users.php?source=publish&user={$user_id}'>Admin</td>
                     <td><a href='users.php?source=unpuplish&user={$user_id}'>Subscribe</td>               

@@ -83,8 +83,8 @@
 
     <div class="form-group">
          <select name="post_status" id="" value="<?php echo $post_status ;?>">  
-             <option value="published">Published</option>
-             <option value="draft">draft</option>
+             <option value="published" >Published</option>
+             <option value="draft" <?php if($post_status=="unpublished")echo"selected" ?> >draft</option>
          </select>
       </div>
 

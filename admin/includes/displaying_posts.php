@@ -15,6 +15,10 @@
                 case 'delete':
                     delete_post($checkBoxValue );
                     break;
+
+                case 'clone':
+                    clone_post($checkBoxValue );
+                    break;
                 
                 default:
                    
@@ -64,31 +68,32 @@
         </tr>
     </thead>
     <tbody>
-       <?php $sql = "SELECT * FROM posts ";
-    $select_post = mysqli_query($conn,$sql);
-    if(!$select_post) 
-        die("falid".mysqli_error($conn));
-    else{
-        while($row = mysqli_fetch_assoc($select_post)){
+       <?php
+        $sql = "SELECT * FROM posts ";
+        $select_post = mysqli_query($conn,$sql);
+        if(!$select_post) 
+            die("falid".mysqli_error($conn));
+        else{
+            while($row = mysqli_fetch_assoc($select_post)){
 
-            $post_id =  $row['post-id'];
-            $post_catgory_id =  $row['post-catgory-id'];
-                $sql = "SELECT * FROM catgory WHERE `cat-id`=$post_catgory_id";
-                $select_catgory = mysqli_query($conn,$sql);
-                while($row2 = mysqli_fetch_assoc($select_catgory))
-                    $post_catgory = $row2['cat-name'];
-            $post_title =  $row['post-title'];
-            $post_aurther =  $row['post-aurther'];
-            $post_date =  $row['post-date'];
-            $post_img =  $row['post-img'];
-            $post_tags =  $row['post_tags'];
-            $post_comment =  $row['post-commet-count'];
-                $sql = "SELECT * FROM comments WHERE `comment_post_id`=$post_id";
-                $count_comments = mysqli_query($conn,$sql);
-                $comment_count= mysqli_num_rows($count_comments);
-            $post_state =  $row['post-state'];
+                $post_id =  $row['post-id'];
+                $post_catgory_id =  $row['post-catgory-id'];
+                    $sql = "SELECT * FROM catgory WHERE `cat-id`=$post_catgory_id";
+                    $select_catgory = mysqli_query($conn,$sql);
+                    while($row2 = mysqli_fetch_assoc($select_catgory))
+                        $post_catgory = $row2['cat-name'];
+                $post_title =  $row['post-title'];
+                $post_aurther =  $row['post-aurther'];
+                $post_date =  $row['post-date'];
+                $post_img =  $row['post-img'];
+                $post_tags =  $row['post_tags'];
+                $post_comment =  $row['post-commet-count'];
+                    $sql = "SELECT * FROM comments WHERE `comment_post_id`=$post_id";
+                    $count_comments = mysqli_query($conn,$sql);
+                    $comment_count= mysqli_num_rows($count_comments);
+                $post_state =  $row['post-state'];
 
-            
+                
             echo " <tr> 
                     <td><input type='checkbox' value='{$post_id}'  name='checkBoxArray[]' class='checkboxs'></td>
                     <td> <a href='../post.php?post={$post_id}'>{$post_id}</a> </td>
