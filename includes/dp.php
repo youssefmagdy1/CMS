@@ -1,8 +1,8 @@
 <?php 
 
 $dp['db_host']= 'localhost';
-$dp['db_user'] = 'youssef';
-$dp['db_pass'] = 'EAUAU9a08dM5GCVA';
+$dp['db_user'] = 'root';
+$dp['db_pass'] = '';
 $dp['db_name'] = 'cms';
 
 foreach($dp as $key =>$value ){
